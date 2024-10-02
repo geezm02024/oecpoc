@@ -10,6 +10,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -74,6 +75,15 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
+
+    
+    # Add custom CSS to hide the GitHub icon
+    hide_github_icon = """
+        #GithubIcon {
+          visibility: hidden;
+        }    
+    """
+    st.markdown(hide_github_icon, unsafe_allow_html=True)
 
     st.header("CSHARK AI Chat :books:")
     user_question = st.text_input("Ask a question about your documents:")
