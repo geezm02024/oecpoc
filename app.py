@@ -77,13 +77,14 @@ def main():
         st.session_state.chat_history = None
 
     
-    # Add custom CSS to hide the GitHub icon
-    hide_github_icon = """
-        #GithubIcon {
-          visibility: hidden;
-        }    
+    hide_streamlit_toolbar = """
+        <style>
+            [data-testid="stToolbar"] {
+                display: none;
+            }
+        </style>
     """
-    st.markdown(hide_github_icon, unsafe_allow_html=True)
+    st.markdown(hide_streamlit_toolbar, unsafe_allow_html=True)
 
     st.header("CSHARK AI Chat :books:")
     user_question = st.text_input("Ask a question about your documents:")
